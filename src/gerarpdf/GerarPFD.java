@@ -10,8 +10,9 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
-import com.itextpdf.text.Image;
+
 import com.itextpdf.text.Font.FontFamily;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
@@ -33,9 +34,6 @@ import loja.Produto;
 
 public class GerarPFD {
 	
-	
-
-	
 
 	public static void geradoPdf(Pedido pedido) throws FileNotFoundException {
 		
@@ -49,7 +47,7 @@ public class GerarPFD {
 			
 			
 			String nomeDocumento= pedido.getCodigoPedido();
-			PdfWriter writer=	PdfWriter.getInstance(document,new FileOutputStream("E:\\DOUGLAS CURSOS\\Cursos E Projetos\\Analise e Desenvolvimento de Sistemas (DROPBOX)\\JAVA\\workspace\\LojaPdf\\" +nomeDocumento+".pdf"));
+			PdfWriter writer= PdfWriter.getInstance(document,new FileOutputStream("E:\\DOUGLAS CURSOS\\Cursos E Projetos\\Analise e Desenvolvimento de Sistemas (DROPBOX)\\JAVA\\workspace\\LojaPdf\\" +nomeDocumento+".pdf"));
 			
 			
 			document.open();
@@ -150,26 +148,17 @@ public class GerarPFD {
 			 document.add(total);
 			
 			 
+			 PdfContentByte cb = writer.getDirectContent();
+			 BarcodeEAN codeEAN = new BarcodeEAN();
+			 codeEAN.setCodeType(codeEAN.EAN13);
+			 codeEAN.setCode("12316543216561");
 			 
 			 
-			 PdfContentByte codigoBarras= writer.getDirectContent();
-				
-				BarcodeEAN codeEAN= new BarcodeEAN();
-				
-				codeEAN.setCodeType(codeEAN.EAN8);
-	
-				
-				codeEAN.setCode("");
-				
-				try{
-					Image imageEAN= codeEAN.createImageWithBarcode(codigoBarras, null, null);
-					document.add(new Phrase(new Chunk(imageEAN,0,0)));
-				}catch(Exception ex){
-					
-					System.out.println("Erro"+ ex.getMessage());
-				}
-			
-				
+			 Paragraph codigobarra= new Paragraph("Codigo Barras Prouto");
+			 
+			 Image imageEAN = codeEAN.createImageWithBarcode(cb,null, null);
+				document.add(new Phrase(new Chunk(imageEAN, 0, 0)));
+			 
 			
 			 
 			

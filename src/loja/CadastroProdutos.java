@@ -36,7 +36,7 @@ public class CadastroProdutos {
 	
 		
 		
-		Pedido pedido= new Pedido("ADERFV",cliente,carrinho,frete );
+		Pedido pedido= new Pedido("ADECGDERCSDS",cliente,carrinho,frete );
 	
 
 	
