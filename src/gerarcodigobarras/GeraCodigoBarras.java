@@ -22,9 +22,9 @@ public class GeraCodigoBarras {
 		BarcodeEAN codeEAN= new BarcodeEAN();
 		
 		codeEAN.setCodeType(codeEAN.EAN13);
-		String codigo=pedido.getCodigoPedido();
 		
-		codeEAN.setCode(codigo);
+		
+		codeEAN.setCode("1232323233232");
 		
 		Image imageEAN= codeEAN.createImageWithBarcode(codigoBarras, null, null);
 		
