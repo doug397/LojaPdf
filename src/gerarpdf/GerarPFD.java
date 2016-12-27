@@ -41,13 +41,15 @@ public class GerarPFD {
 	
 	
 		Document document= new Document(PageSize.A4,20,20,20,20);
-	
+		 GeraCodigoBarras geraCodigoBarra= new GeraCodigoBarras();
+		 
 		
 		try{
 			
 			
 			String nomeDocumento= pedido.getCodigoPedido();
-			PdfWriter writer= PdfWriter.getInstance(document,new FileOutputStream("E:\\DOUGLAS CURSOS\\Cursos E Projetos\\Analise e Desenvolvimento de Sistemas (DROPBOX)\\JAVA\\workspace\\LojaPdf\\" +nomeDocumento+".pdf"));
+			
+			PdfWriter writer= PdfWriter.getInstance(document,new FileOutputStream("E:\\" +nomeDocumento+".pdf"));
 			
 			
 			document.open();
@@ -146,21 +148,12 @@ public class GerarPFD {
 			 document.add(produtos);
 			 document.add(frete);
 			 document.add(total);
-			
-			 
-			 PdfContentByte cb = writer.getDirectContent();
-			 BarcodeEAN codeEAN = new BarcodeEAN();
-			 codeEAN.setCodeType(codeEAN.EAN13);
-			 codeEAN.setCode("12316543216561");
-			 
-			 
-			 Paragraph codigobarra= new Paragraph("Codigo Barras Prouto");
-			 
-			 Image imageEAN = codeEAN.createImageWithBarcode(cb,null, null);
-				document.add(new Phrase(new Chunk(imageEAN, 0, 0)));
 			 
 			
 			 
+			 geraCodigoBarra.geraCodigo(pedido, writer, document);
+			
+		
 			
 			 
 	          
