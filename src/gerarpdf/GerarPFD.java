@@ -49,7 +49,8 @@ public class GerarPFD {
 			
 			String nomeDocumento= pedido.getCodigoPedido();
 			
-			PdfWriter writer= PdfWriter.getInstance(document,new FileOutputStream("E:\\" +nomeDocumento+".pdf"));
+			PdfWriter writer= PdfWriter.getInstance(document,new FileOutputStream("E:\\DOUGLAS CURSOS\\Cursos E Projetos\\"
+					+ "Analise e Desenvolvimento de Sistemas (DROPBOX)\\JAVA\\workspace\\LojaPdf\\" +nomeDocumento+".pdf"));
 			
 			
 			document.open();
@@ -149,11 +150,8 @@ public class GerarPFD {
 			 document.add(frete);
 			 document.add(total);
 			 
-			
 			 
 			 geraCodigoBarra.geraCodigo(pedido, writer, document);
-			
-		
 			
 			 
 	          
