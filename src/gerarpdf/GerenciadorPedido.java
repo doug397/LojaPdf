@@ -27,7 +27,7 @@ public class GerenciadorPedido {
 		 System.out.println();
 		
 		pedido.getCliente().detalhesCliente();
-
+			
 		
 		
 		try {
