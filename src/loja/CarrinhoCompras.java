@@ -7,7 +7,7 @@ public class CarrinhoCompras {
 	
 	
 	private double total=0.0;
-private double valorFrete=0.0;
+    private double valorFrete=0.0;
 
 	public double getValorFrete() {
 	return valorFrete;
